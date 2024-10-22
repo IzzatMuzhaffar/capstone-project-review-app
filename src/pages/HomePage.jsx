@@ -19,18 +19,21 @@ export default function HomePage() {
     }
 
     return (
-        <Container className="d-flex justify-content-center">
+        <Container>
+
             <Row>
-                <h1>Welcome!</h1>
-                <Button className='rounded-pill mb-3' type='submit' onClick={handleLogout}>Log Out</Button>
-            </Row>
-            <Row>
-                <p>product carousel left to right</p>
-                <HomeCarousel />
-            </Row>
-            <Row>
-                <Col>left column</Col>
-                <Col md={6}>show popular reviews</Col>
+                <Col>
+                    <p>left column</p>
+                    <Button className='rounded-pill mb-3' type='submit' onClick={handleLogout}>Log Out</Button>
+                </Col>
+                <Col md={8}>
+                    <Row className="d-flex justify-content-center">
+                        <h1>Welcome!</h1>
+                    </Row>
+                    <Row>
+                        <HomeCarousel />
+                    </Row>
+                </Col>
                 <Col>right column</Col>
             </Row>
         </Container>

@@ -19,14 +19,15 @@ export default function ProductPage() {
     }
 
     return (
-        <Container>
-            <Row className="d-flex justify-content-center">
+        <Container className="d-flex justify-content-center">
+            <Row>
                 <Col>
                     <p>left column</p>
                     <Button className='rounded-pill mb-3' type='submit' onClick={handleLogout}>Log Out</Button>
                 </Col>
-                <Col md={6}>
+                <Col md={8}>
                     <ProductTable />
+                    <h4>User Reviews</h4>
                 </Col>
                 <Col>right column</Col>
             </Row>

@@ -1,17 +1,20 @@
+import { Image } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 
 export default function ProductTable() {
+    const pic = "https://picsum.photos/600/200"
+
     return (
         <>
             <Table bordered>
                 <thead>
                     <tr>
-                        <th>Product Name</th>
+                        <h4>Product Name</h4>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style={{ fontSize: "14px" }}>
                     <tr>
-                        <td>Product Image</td>
+                        <td colSpan={5}><Image src={pic} /></td>
                     </tr>
                     <tr>
                         <td><strong>SPECIFICATIONS</strong></td>
@@ -32,8 +35,14 @@ export default function ProductTable() {
                         <td>- Cons 2</td>
                     </tr>
                     <tr>
+                        <td>PRODUCT LINK</td>
+                        <td colSpan={4}>
+                            <a href="">Product external link</a>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>PRODUCT SHOWCASE</td>
-                        <td>Youtube External API</td>
+                        <td colSpan={4}>Youtube external API</td>
                     </tr>
                 </tbody>
             </Table>
