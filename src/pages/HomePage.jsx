@@ -9,6 +9,7 @@ export default function HomePage() {
     const auth = getAuth()
     const navigate = useNavigate()
     const { currentUser } = useContext(AuthContext)
+    console.log(`User UID: ${currentUser.uid}`)
 
     if (!currentUser) {
         navigate("/login")

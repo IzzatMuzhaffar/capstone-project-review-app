@@ -1,6 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthProvider";
 
@@ -46,15 +46,20 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
-            <Form>
-                <Form.Group>
-                    <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" value={email} />
-                    <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" value={password} />
-                </Form.Group>
-                <Button className='rounded-pill mb-3' type='submit' onClick={handleSignUp}>Sign Up</Button>
-                <Button className='rounded-pill mb-3' type='submit' onClick={handleLogin}>Log In</Button>
-            </Form>
-        </div>
+        <Container>
+            <Col></Col>
+            <Col md={8} className="d-flex justify-content-center" style={{ marginTop: "20%", marginLeft: "10%" }}>
+                <Form>
+                    <h1 className="mb-3">Sign up now!</h1>
+                    <Form.Group>
+                        <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" value={email} className="mb-2" style={{ width: "400px" }} />
+                        <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" value={password} className="mb-3" style={{ width: "400px" }} />
+                    </Form.Group>
+                    <Button className='rounded-pill me-2' style={{ width: "150px" }} type='submit' onClick={handleSignUp}>Sign Up</Button>
+                    <Button className='rounded-pill me-2' style={{ width: "150px" }} type='submit' onClick={handleLogin}>Log In</Button>
+                </Form>
+            </Col>
+            <Col></Col>
+        </Container>
     )
 }

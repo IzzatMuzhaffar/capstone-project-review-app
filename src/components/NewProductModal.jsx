@@ -1,17 +1,40 @@
+import axios from 'axios'
 import { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
+import { BASE_URL } from './BaseUrl'
 
 export default function NewProductModal({ show, handleClose }) {
     const [productName, setProductName] = useState("")
-    const [productImage, setProductImage] = useState(null)
+    // const [productImage, setProductImage] = useState(null)
+    const [productImage, setProductImage] = useState("")
     const [productSpecs, setProductSpecs] = useState("")
     const [productPros, setProductPros] = useState("")
     const [productCons, setProductCons] = useState("")
     const [productLink, setProductLink] = useState("")
     const [productVideo, setProductVideo] = useState("")
 
+    // to create function for image storage
     const handleSave = () => {
+        const data = {
+            name: productName,
+            image_url: productImage,
+            specification: productSpecs,
+            pros: productPros,
+            cons: productCons,
+            referral_link: productLink,
+            video_url: productVideo,
+            created_at: new Date().toISOString(),
+        };
 
+        axios
+            .post(`${BASE_URL}/products`, data)
+            .then((response) => {
+                console.log("Success:", response.data)
+                handleClose()
+            })
+            .catch((error) => {
+                console.error("Error", error)
+            })
     }
 
     return (
