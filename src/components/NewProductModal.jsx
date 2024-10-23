@@ -7,7 +7,6 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 export default function NewProductModal({ show, handleClose }) {
     const [productName, setProductName] = useState("")
-    // const [productImage, setProductImage] = useState("")
     const [productImage, setProductImage] = useState(null)
     const [productSpecs, setProductSpecs] = useState("")
     const [productPros, setProductPros] = useState("")
