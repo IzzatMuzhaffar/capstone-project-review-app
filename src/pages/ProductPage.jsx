@@ -4,6 +4,7 @@ import { Button, Col, Container, Row } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../components/AuthProvider"
 import ProductTable from "../components/ProductTable"
+import ProductReviewForm from "../components/ProductReviewForm"
 
 export default function ProductPage() {
     const auth = getAuth()
@@ -28,6 +29,7 @@ export default function ProductPage() {
                 <Col md={8}>
                     <ProductTable />
                     <h4>User Reviews</h4>
+                    <ProductReviewForm />
                 </Col>
                 <Col>right column</Col>
             </Row>
