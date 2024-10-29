@@ -1,26 +1,13 @@
-import { getAuth } from "firebase/auth"
-import { useContext, useEffect, useState } from "react"
-import { Button, Col, Container, Row } from "react-bootstrap"
+import { useEffect, useState } from "react"
+import { Col, Row } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../components/AuthProvider"
+import { BASE_URL } from "../components/BaseUrl"
 import HomeCarousel from "../components/HomeCarousel"
 import HomeProductCard from "../components/HomeProductCard"
-import { BASE_URL } from "../components/BaseUrl"
 
 export default function HomePage() {
-    const [products, setProducts] = useState([])
-    const auth = getAuth()
     const navigate = useNavigate()
-    const { currentUser } = useContext(AuthContext)
-    console.log(`User UID: ${currentUser.uid}`)
-
-    if (!currentUser) {
-        navigate("/login")
-    }
-
-    const handleLogout = () => {
-        auth.signOut()
-    }
+    const [products, setProducts] = useState([])
 
     const fetchProducts = () => {
         fetch(`${BASE_URL}/products`)
@@ -30,26 +17,26 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-        if (currentUser) {
+        const token = localStorage.getItem("authToken")
+        if (token) {
             fetchProducts()
+        } else {
+            navigate("/login")
         }
-    }, [currentUser])
+    }, [navigate])
 
     return (
-        <Container>
-
+        <div className="bg-light" style={{ minHeight: "100vh" }}>
             <Row>
-                <Col>
-                    <p>left column</p>
-                    <Button className='rounded-pill mb-3' type='submit' onClick={handleLogout}>Log Out</Button>
-                </Col>
-                <Col md={8}>
-                    <Row className="d-flex justify-content-center">
-                        <h1>Welcome!</h1>
-                    </Row>
-                    <Row>
-                        <HomeCarousel />
-                    </Row>
+                <Col></Col>
+                <Col md={8} className="d-flex flex-column">
+                    <div className="d-flex flex-row justify-content-center mt-4 mb-3" style={{ fontSize: "18px", borderBottom: "1px solid red" }}>
+                        <p><strong>FEATURED PRODUCTS</strong></p>
+                    </div>
+                    <HomeCarousel products={products} />
+                    <div className="d-flex flex-row justify-content-center mt-5 mb-3" style={{ fontSize: "18px", borderBottom: "1px solid red" }}>
+                        <p><strong>BEST PICKS</strong></p>
+                    </div>
                     {products.map((product) => (
                         <HomeProductCard key={product.id}
                             productId={product.id}
@@ -60,8 +47,8 @@ export default function HomePage() {
                         />
                     ))}
                 </Col>
-                <Col>right column</Col>
+                <Col></Col>
             </Row>
-        </Container>
+        </div>
     )
 }

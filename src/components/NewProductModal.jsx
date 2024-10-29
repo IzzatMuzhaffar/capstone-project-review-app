@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
-import { BASE_URL } from './BaseUrl'
+import { jwtDecode } from 'jwt-decode'
 import { storage } from '../firebase'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { BASE_URL } from './BaseUrl'
 
 export default function NewProductModal({ show, handleClose }) {
     const [productName, setProductName] = useState("")
@@ -13,10 +14,14 @@ export default function NewProductModal({ show, handleClose }) {
     const [productCons, setProductCons] = useState("")
     const [productLink, setProductLink] = useState("")
     const [productVideo, setProductVideo] = useState("")
+    const [productTagline, setProductTagline] = useState("")
 
     const handleSave = async () => {
+        const token = localStorage.getItem("authToken")
+        const decodedToken = jwtDecode(token)
+        const userId = decodedToken.user_id
         try {
-            // function for image storage
+            // upload image to firebase storage and return url
             let imageUrl = ""
             console.log(productImage)
             if (productImage !== null) {
@@ -26,7 +31,6 @@ export default function NewProductModal({ show, handleClose }) {
             }
             console.log(imageUrl)
 
-            // prepare data for post request
             const data = {
                 name: productName,
                 image_url: imageUrl,
@@ -35,11 +39,13 @@ export default function NewProductModal({ show, handleClose }) {
                 cons: productCons,
                 referral_link: productLink,
                 video_url: productVideo,
+                tagline: productTagline,
+                created_by: userId,
                 created_at: new Date().toISOString(),
             };
             console.log(data)
 
-            // post request to add product
+            // create new product
             axios
                 .post(`${BASE_URL}/products`, data)
                 .then((response) => {
@@ -60,13 +66,19 @@ export default function NewProductModal({ show, handleClose }) {
     return (
         <>
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>Add a new product, please fill in the details.</Modal.Header>
+                <Modal.Header closeButton><strong>Add a new product, please fill in the details.</strong></Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group>
                             <Form.Control
                                 placeholder="Enter product name"
                                 onChange={(e) => setProductName(e.target.value)}
+                                className='mb-2'
+                                required
+                            />
+                            <Form.Control
+                                placeholder="Enter product tagline"
+                                onChange={(e) => setProductTagline(e.target.value)}
                                 className='mb-2'
                                 required
                             />
@@ -117,7 +129,7 @@ export default function NewProductModal({ show, handleClose }) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
-                        variant="primary"
+                        variant="secondary"
                         className="rounded-pill"
                         onClick={handleSave}
                     >

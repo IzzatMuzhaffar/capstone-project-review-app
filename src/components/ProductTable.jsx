@@ -1,51 +1,40 @@
-import { Image } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table';
+import { Col, Image, Row } from 'react-bootstrap';
 
-export default function ProductTable() {
-    const pic = "https://picsum.photos/600/200"
+export default function ProductTable({ name, image, specification, pros, cons, referral, video, tagline }) {
 
     return (
-        <>
-            <Table bordered>
-                <thead>
-                    <tr>
-                        <h4>Product Name</h4>
-                    </tr>
-                </thead>
-                <tbody style={{ fontSize: "14px" }}>
-                    <tr>
-                        <td colSpan={5}><Image src={pic} /></td>
-                    </tr>
-                    <tr>
-                        <td><strong>SPECIFICATIONS</strong></td>
-                        <td><strong>SPECS: </strong>Description 1</td>
-                        <td><strong>SPECS: </strong>Description 2</td>
-                        <td><strong>SPECS: </strong>Description 3</td>
-                        <td><strong>SPECS: </strong>Description 4</td>
-                    </tr>
-                    <tr>
-                        <td><strong>REASONS TO BUY</strong></td>
-                        <td>+ Pros 1</td>
-                        <td>+ Pros 2</td>
-                        <td>+ Pros 3</td>
-                    </tr>
-                    <tr>
-                        <td><strong>REASONS TO AVOID</strong></td>
-                        <td>- Cons 1</td>
-                        <td>- Cons 2</td>
-                    </tr>
-                    <tr>
-                        <td>PRODUCT LINK</td>
-                        <td colSpan={4}>
-                            <a href="">Product external link</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>PRODUCT SHOWCASE</td>
-                        <td colSpan={4}>Youtube external API</td>
-                    </tr>
-                </tbody>
-            </Table>
-        </>
+        <div className='d-flex flex-column justify-content-center mb-3'>
+            <Row className='mt-3' style={{ borderBottom: "1px solid" }}>
+                <h2 className='d-flex flex-row justify-content-center mb-3'>{name}</h2>
+                <p className='d-flex flex-row justify-content-center' style={{ fontSize: "18px" }}><i>{tagline}</i></p>
+            </Row>
+            <Row className='d-flex flex-column justify-content-center' style={{ borderBottom: "1px solid" }}>
+                <Image className='my-3' src={image} style={{ width: "100%" }} />
+            </Row>
+            <Row className='my-3'>
+                <Col md={4}>SPECIFICATIONS</Col>
+                <Col>{specification}</Col>
+            </Row>
+            <Row className='my-3'>
+                <Col md={4}>REASONS TO BUY</Col>
+                <Col>{pros}</Col>
+            </Row>
+            <Row className='my-3'>
+                <Col md={4}>REASONS TO AVOID</Col>
+                <Col>{cons}</Col>
+            </Row>
+            <Row className='my-3'>
+                <Col md={4}>TODAY&apos;S BEST DEALS</Col>
+                <Col><a href={referral} target="_blank" style={{ color: "red" }}><strong>Check Shopee Malaysia</strong></a></Col>
+            </Row>
+            <Row className='my-3'>
+                <Col md={4}>PRODUCT SHOWCASE</Col>
+                <Col>
+                    <div className='ratio ratio-16x9'>
+                        <iframe src={video} title="YouTube video player" allowFullScreen></iframe>
+                    </div>
+                </Col>
+            </Row>
+        </div >
     )
 }
