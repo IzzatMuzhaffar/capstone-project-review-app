@@ -24,7 +24,7 @@ export default function LoginPage() {
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
-                console.log(user) // remove before deploy
+                console.log(user)
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -39,7 +39,7 @@ export default function LoginPage() {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user) // remove before deploy
+                console.log(user)
                 setAuthToken(user.accessToken)
             })
             .catch((error) => {
