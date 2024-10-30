@@ -12,9 +12,11 @@ export default function LoginPage() {
 
     const [authToken, setAuthToken] = useLocalStorage("authToken", "")
 
-    // useEffect(() => {
-    //     if (authToken) navigate("/home")
-    // }, [authToken, navigate])
+    useEffect(() => {
+        if (authToken) {
+            navigate("/home")
+        }
+    }, [authToken, navigate])
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -39,7 +41,6 @@ export default function LoginPage() {
                 const user = userCredential.user;
                 console.log(user) // remove before deploy
                 setAuthToken(user.accessToken)
-                navigate("/home")
             })
             .catch((error) => {
                 const errorCode = error.code;
