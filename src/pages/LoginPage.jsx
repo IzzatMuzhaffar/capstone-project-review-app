@@ -9,17 +9,12 @@ export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    // const { currentUser } = useContext(AuthContext)
-
-    // useEffect(() => {
-    //     if (currentUser) navigate("/home")
-    // }, [currentUser, navigate])
 
     const [authToken, setAuthToken] = useLocalStorage("authToken", "")
 
-    useEffect(() => {
-        if (authToken) navigate("/home")
-    }, [authToken, navigate])
+    // useEffect(() => {
+    //     if (authToken) navigate("/home")
+    // }, [authToken, navigate])
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -44,6 +39,7 @@ export default function LoginPage() {
                 const user = userCredential.user;
                 console.log(user) // remove before deploy
                 setAuthToken(user.accessToken)
+                navigate("/home")
             })
             .catch((error) => {
                 const errorCode = error.code;
