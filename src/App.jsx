@@ -93,12 +93,12 @@ export default function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='admin' element={<AdminPage />} />
-          <Route path='login' element={<LoginPage />} />
           <Route path='products/product/5' element={<ProductA />} />
           <Route path='products/product/6' element={<ProductB />} />
           <Route path='products/product/9' element={<ProductC />} />
           <Route path='products/product/10' element={<ProductD />} />
         </Route>
+        <Route path='/login' element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   )
