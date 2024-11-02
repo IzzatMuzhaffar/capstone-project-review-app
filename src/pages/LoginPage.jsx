@@ -14,7 +14,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (authToken) {
-            navigate("/home")
+            navigate("/")
         }
     }, [authToken, navigate])
 
