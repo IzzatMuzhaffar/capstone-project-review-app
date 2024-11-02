@@ -54,10 +54,10 @@ export function Layout() {
           <Navbar>
             <Col className='d-flex flex-row justify-content-center'>
               <Nav>
-                <Nav.Link href='/home' style={{ color: "white", fontSize: "18px" }} className='mx-2'>
+                <Nav.Link href='/' style={{ color: "white", fontSize: "18px" }} className='mx-2'>
                   <i className="bi bi-house-fill"></i>
                 </Nav.Link>
-                <Nav.Link href='/home' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Best Picks</Nav.Link>
+                <Nav.Link href='/' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Best Picks</Nav.Link>
                 <Nav.Link href='/products/product/5' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Headphones</Nav.Link>
                 <Nav.Link href='/products/product/6' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Microphones</Nav.Link>
                 <Nav.Link href='/products/product/9' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Keyboards</Nav.Link>
