@@ -11,8 +11,8 @@ export default function ProductReviewCard({ review, recommend, date }) {
     const formattedDate = `${day}/${month}/${year}`;
 
     return (
-        <div className="bg-light d-flex flex-row mb-3 px-3 py-3">
-            <Col md={2}><i className="bi bi-person-square d-flex flex-column justify-content-start" style={{ fontSize: "70px" }}></i></Col>
+        <div className="bg-light d-flex flex-row mb-3 px-2 py-3">
+            <Col xs={2} md={2}><i className="bi bi-person-square d-flex flex-column justify-content-start" style={{ fontSize: "70px" }}></i></Col>
             <Col className="d-flex flex-column">
                 <Row>
                     {recommend ?

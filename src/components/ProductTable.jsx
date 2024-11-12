@@ -3,7 +3,7 @@ import { Col, Image, Row } from 'react-bootstrap';
 export default function ProductTable({ name, image, specification, pros, cons, referral, video, tagline }) {
 
     return (
-        <div className='d-flex flex-column justify-content-center mb-3'>
+        <div className='d-flex flex-column justify-content-center mb-3 px-2'>
             <Row className='mt-3' style={{ borderBottom: "1px solid" }}>
                 <h2 className='d-flex flex-row justify-content-center mb-3'>{name}</h2>
                 <p className='d-flex flex-row justify-content-center' style={{ fontSize: "18px" }}><i>{tagline}</i></p>

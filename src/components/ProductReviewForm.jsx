@@ -55,7 +55,7 @@ export default function ProductReviewForm({ id, name }) {
     const handleReviewChange = (e) => { setReview(e.target.value) }
 
     return (
-        <div className='bg-light px-3 py-3 mb-3'>
+        <div className='bg-light px-2 py-3 mb-3'>
             <Row>
                 <h5>Write a review for {name}</h5>
                 <p className='mb-0'>
@@ -64,7 +64,7 @@ export default function ProductReviewForm({ id, name }) {
                 <p>Please remember to be polite and follow the <strong>Rules and Guidelines</strong>.</p>
             </Row>
             <Row>
-                <Col md={2}><i className="bi bi-person-square d-flex flex-column justify-content-start" style={{ fontSize: "100px" }}></i></Col>
+                <Col xs={3} md={2}><i className="bi bi-person-square d-flex flex-column justify-content-start" style={{ fontSize: "100px" }}></i></Col>
                 <Col>
                     <Form>
                         <Form.Group>

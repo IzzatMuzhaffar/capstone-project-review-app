@@ -45,7 +45,8 @@ export function Layout() {
     <div style={{
       backgroundImage: "url(https://firebasestorage.googleapis.com/v0/b/capstone-project-bf495.appspot.com/o/productImages%2Flanding-page2%20-%20final%20edit.jpg?alt=media&token=4b182d17-e656-4023-a29f-8000bd412190)",
       backgroundSize: "cover",
-      minHeight: "100vh"
+      backgroundPosition: "center",
+      height: "100%"
     }}
     >
       <Row>

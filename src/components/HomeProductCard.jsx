@@ -10,8 +10,8 @@ export default function HomeProductCard({ productId, name, imageUrl, specs, pros
 
     return (
         <div key={productId} className='d-flex flex-row my-2'>
-            <Col md={4}>
-                <Image src={imageUrl} style={{ width: "200px", height: "200px" }} />
+            <Col xs={4} md={4} className='me-3'>
+                <Image src={imageUrl} style={{ width: "100%", minHeight: "200px" }} />
             </Col>
             <Col>
                 <p style={{ fontSize: "18px" }}><strong>{name}</strong></p>

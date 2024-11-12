@@ -62,7 +62,7 @@ export default function ProductC() {
                             name={product.name}
                         />
                     ))}
-                    <div className="mt-3" style={{ borderTop: "1px solid" }}>
+                    <div className="mt-3 px-2" style={{ borderTop: "1px solid" }}>
                         <p className="mt-3" style={{ fontSize: "18px" }}><strong>READER REVIEWS FOR THIS PRODUCT</strong></p>
                     </div>
                     {reviews.map((review) => (
