@@ -43,9 +43,9 @@ export default function AdminPage() {
                             <Button variant='secondary' style={{ width: "200px", borderRadius: "10px" }} onClick={handleShow}>Add new product</Button>
                         </div>
                     </div>
-                    <div className='row row-cols-1 row-cols-xxl-3'>
+                    <div className='admin-product-card'>
                         {products.map((product) => (
-                            <div key={product.id} className='col'>
+                            <div key={product.id}>
                                 <AdminProductCard product={product} />
                             </div>
                         ))}

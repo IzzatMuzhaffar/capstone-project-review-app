@@ -7,9 +7,11 @@ export default function HomeCarousel({ products }) {
                 <Carousel.Item interval={5000} key={product.id}>
                     <img alt={product.id}
                         src='https://picsum.photos/200/400?grayscale'
-                        style={{ objectFit: 'cover', height: '200px', width: '100%' }}
+                        style={{ objectFit: 'cover', height: '200px', width: '100%', opacity: "0.5" }}
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption
+                        style={{ color: "black" }}
+                    >
                         <h3>{product.name}</h3>
                         <p>{product.tagline}</p>
                     </Carousel.Caption>

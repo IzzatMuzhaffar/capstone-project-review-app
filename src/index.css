@@ -1,0 +1,155 @@
+/* navbar */
+
+:root {
+    --bg: rgb(250, 50, 50);
+    --bg-accent: rgb(110, 110, 110);
+    --text-color: white;
+    --fontsize: 18px;
+    --nav-size: 50px;
+    --border: 1px solid var(--bg);
+    --border-radius: 8px;
+    --speed: 500ms;
+}
+
+.side-column {
+    width: 15%;
+}
+
+.navbar {
+    height: var(--nav-size);
+    background-color: var(--bg);
+    padding: 0 1rem;
+    border-bottom: var(--border);
+}
+
+.nav-item {
+    width: calc(var(--nav-size) * 1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: var(--fontsize);
+    text-decoration: none;
+}
+
+.nav-button {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: var(--bg-accent);
+    border-radius: 5px;
+    margin-left: 90vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: calc(var(--fontsize) * 0.7);
+    text-decoration: none;
+    transition: filter 300ms;
+}
+
+.nav-button:hover {
+    filter: brightness(1.2);
+}
+
+/* navbar modal */
+
+.menu-item {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition: filter 300ms;
+}
+
+.menu-item:hover {
+    filter: brightness(0.8);
+}
+
+/* home product card */
+
+.home-card-image {
+    width: 100%;
+    min-height: 100%;
+}
+
+.home-card-text {
+    font-size: var(--fontsize);
+}
+
+/* product review form */
+.product-form-image {
+    display: flex;
+}
+
+/* product review card */
+.product-review-image {
+    font-size: 70px;
+}
+
+.product-review-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+/* admin product card */
+.admin-product-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* login form */
+.login-form {
+    width: 400px;
+}
+
+.login-message {
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* css for smaller screen */
+
+@media only screen and (max-width: 1050px) {
+
+    /* navbar */
+    .nav-item {
+        display: none;
+    }
+
+    .nav-button {
+        display: flex;
+    }
+
+    /* home product card */
+    .home-card-image {
+        min-height: 80%;
+    }
+
+    .home-card-text {
+        font-size: calc(var(--fontsize) * 0.8);
+    }
+
+    /* product review form */
+    .product-form-image {
+        display: none;
+    }
+
+    /* product review card */
+    .product-review-image {
+        font-size: 50px;
+        translate: 0 5px;
+    }
+
+    .product-review-text {
+        font-size: 14px;
+    }
+}

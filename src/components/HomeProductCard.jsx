@@ -9,12 +9,14 @@ export default function HomeProductCard({ productId, name, imageUrl, specs, pros
     }
 
     return (
-        <div key={productId} className='d-flex flex-row my-2'>
+        <div key={productId} className='d-flex flex-row mx-1 my-2'>
             <Col xs={4} md={4} className='me-3'>
-                <Image src={imageUrl} style={{ width: "100%", minHeight: "200px" }} />
+                <Image className='home-card-image' src={imageUrl} />
             </Col>
-            <Col>
-                <p style={{ fontSize: "18px" }}><strong>{name}</strong></p>
+            <Col
+                className='home-card-text'
+            >
+                <p><strong>{name}</strong></p>
                 <p>{specs}</p>
                 <p>{pros}</p>
                 <a onClick={handleShowProduct} style={{ color: "red" }}>See more ...</a>

@@ -8,6 +8,7 @@ export default function LoginPage() {
     const auth = getAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+    const [message, setMessage] = useState("")
     const navigate = useNavigate()
 
     const [authToken, setAuthToken] = useLocalStorage("authToken", "")
@@ -22,13 +23,17 @@ export default function LoginPage() {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed up 
-                console.log(userCredential.user);
+                // Signed up then login
+                const user = userCredential.user;
+                console.log(user)
+                setMessage("Sign up successful!")
+                setTimeout(() => { setAuthToken(user.accessToken) }, 1500)
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error(`${errorCode}: ${errorMessage}`)
+                setMessage(`Error: ${errorCode}`)
             });
     }
 
@@ -36,15 +41,17 @@ export default function LoginPage() {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
+                // Logged in & display message
                 const user = userCredential.user;
                 console.log(user)
-                setAuthToken(user.accessToken)
+                setMessage("Log in successful!")
+                setTimeout(() => { setAuthToken(user.accessToken) }, 1500)
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error(`${errorCode}: ${errorMessage}`)
+                setMessage(`Error: ${errorCode}`)
             });
     }
 
@@ -61,14 +68,15 @@ export default function LoginPage() {
                         <h1 className="mb-3">Welcome to Gege Gaming Reviews!</h1>
                         <p style={{ fontSize: "24px" }}><i>Please log in to continue.</i></p>
                         <div className="d-flex justify-content-center">
-                            <Form.Group>
-                                <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" value={email} className="mb-2" style={{ width: "400px" }} />
-                                <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" value={password} className="mb-3" style={{ width: "400px" }} />
+                            <Form.Group className="login-form">
+                                <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" value={email} className="mb-2" />
+                                <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" value={password} className="mb-3" />
                             </Form.Group>
                         </div>
                         <Button variant="secondary" className='rounded-pill me-2' style={{ width: "150px" }} type='submit' onClick={handleSignUp}>Sign Up</Button>
                         <Button variant="secondary" className='rounded-pill me-2' style={{ width: "150px" }} type='submit' onClick={handleLogin}>Log In</Button>
                     </Form>
+                    <p className="login-message">{message}</p>
                 </div>
             </div>
         </div>

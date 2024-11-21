@@ -12,8 +12,8 @@ export default function ProductReviewCard({ review, recommend, date }) {
 
     return (
         <div className="bg-light d-flex flex-row mb-3 px-2 py-3">
-            <Col xs={2} md={2}><i className="bi bi-person-square d-flex flex-column justify-content-start" style={{ fontSize: "70px" }}></i></Col>
-            <Col className="d-flex flex-column">
+            <Col xs={2} md={2} className='product-review-image'><i className="bi bi-person-square d-flex flex-column justify-content-start"></i></Col>
+            <Col className="product-review-text">
                 <Row>
                     {recommend ?
                         <div className="d-flex flex-row">

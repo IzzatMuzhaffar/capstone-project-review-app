@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Col, Nav, Navbar, Row } from 'react-bootstrap'
+import { Col, Nav, Row } from 'react-bootstrap'
 import { BrowserRouter, Outlet, Route, Routes, useNavigate } from 'react-router-dom'
+import useLocalStorage from 'use-local-storage'
+import { jwtDecode } from 'jwt-decode'
+import { ADMIN_ID } from './components/AdminId'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import AdminPage from './pages/AdminPage'
 import ProductA from './pages/ProductA'
 import ProductB from './pages/ProductB'
-import useLocalStorage from 'use-local-storage'
-import { ADMIN_ID } from './components/AdminId'
-import { jwtDecode } from 'jwt-decode'
 import ProductC from './pages/ProductC'
 import ProductD from './pages/ProductD'
+import HomeNavbarModal from './components/HomeNavbarModal'
 
 export function Layout() {
   const navigate = useNavigate()
@@ -40,6 +41,11 @@ export function Layout() {
     }
   }, [setShowAdmin])
 
+  // navbar behaviour for smaller screen
+  const [showNavbarModal, setShowNavbarModal] = useState(false)
+
+  const handleShowNavbarModal = () => setShowNavbarModal(true)
+  const handleCloseNavbarModal = () => setShowNavbarModal(false)
 
   return (
     <div style={{
@@ -49,32 +55,23 @@ export function Layout() {
       height: "100%"
     }}
     >
-      <Row>
-        <Col className="bg-danger"></Col>
-        <Col md={8} className='bg-danger' >
-          <Navbar>
-            <Col className='d-flex flex-row justify-content-center'>
-              <Nav>
-                <Nav.Link href='/' style={{ color: "white", fontSize: "18px" }} className='mx-2'>
-                  <i className="bi bi-house-fill"></i>
-                </Nav.Link>
-                <Nav.Link href='/' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Best Picks</Nav.Link>
-                <Nav.Link href='/products/product/5' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Headphones</Nav.Link>
-                <Nav.Link href='/products/product/6' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Microphones</Nav.Link>
-                <Nav.Link href='/products/product/9' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Keyboards</Nav.Link>
-                <Nav.Link href='/products/product/10' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Monitors</Nav.Link>
-                {showAdmin ?
-                  <><Nav.Link href='/admin' style={{ color: "white", fontSize: "18px" }} className='mx-2'>Admin</Nav.Link></> : <></>
-                }
-                <div className='bg-secondary'>
-                  <Nav.Link onClick={handleLogout} style={{ color: "white", fontSize: "18px" }} className='mx-2'>Logout</Nav.Link>
-                </div>
-              </Nav>
-            </Col>
-          </Navbar>
-        </Col>
-        <Col className="bg-danger"></Col>
-      </Row>
+      <Nav className='navbar'>
+        <div className='side-column'></div>
+        <a href='/' className='nav-item'>
+          <i className="bi bi-house-fill"></i>
+        </a>
+        <a className='nav-item' href='/products/product/5'>Headphones</a>
+        <a className='nav-item' href='/products/product/6'>Microphones</a>
+        <a className='nav-item' href='/products/product/9'>Keyboards</a>
+        <a className='nav-item' href='/products/product/10'>Monitors</a>
+        {showAdmin ?
+          <><a href='/admin' className='nav-item'>Admin</a></> : <></>
+        }
+        <a onClick={handleLogout} className='nav-item'>Logout</a>
+        <i className="bi bi-list nav-button" onClick={handleShowNavbarModal}></i>
+        <div className='side-column'></div>
+      </Nav>
+      <HomeNavbarModal show={showNavbarModal} handleClose={handleCloseNavbarModal} handleLogout={handleLogout} showAdmin={showAdmin} />
       <Row>
         <Col></Col>
         <Col md={8}>
