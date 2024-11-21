@@ -1,4 +1,11 @@
-/* navbar */
+/* global */
+
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
 
 :root {
     --bg: rgb(250, 50, 50);
@@ -10,6 +17,8 @@
     --border-radius: 8px;
     --speed: 500ms;
 }
+
+/* navbar */
 
 .side-column {
     width: 15%;
