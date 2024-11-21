@@ -76,7 +76,7 @@ export default function LoginPage() {
                         <Button variant="secondary" className='rounded-pill me-2' style={{ width: "150px" }} type='submit' onClick={handleSignUp}>Sign Up</Button>
                         <Button variant="secondary" className='rounded-pill me-2' style={{ width: "150px" }} type='submit' onClick={handleLogin}>Log In</Button>
                     </Form>
-                    <p className="login-message">{message}</p>
+                    <p className="login-message"><strong>{message}</strong></p>
                 </div>
             </div>
         </div>
