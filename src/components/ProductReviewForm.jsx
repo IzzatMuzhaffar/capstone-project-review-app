@@ -90,8 +90,8 @@ export default function ProductReviewForm({ id, name }) {
                                 </Button>
                             </Col>
                             <Col className='d-flex flex-row justify-content-end'>
-                                <Button className='d-flex flex-row px-4' onClick={handlePost} variant='danger'>
-                                    <p className='ms-2 my-1' style={{ fontSize: "16px" }}>Post review</p>
+                                <Button className='d-flex flex-row px-3' onClick={handlePost} variant='danger'>
+                                    <p className='ms-2 my-1'>Post review</p>
                                 </Button>
                             </Col>
                         </div>

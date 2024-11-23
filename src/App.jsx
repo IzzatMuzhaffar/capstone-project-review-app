@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Col, Nav, Row } from 'react-bootstrap'
+import { Col, Container, Nav, Row } from 'react-bootstrap'
 import { BrowserRouter, Outlet, Route, Routes, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'use-local-storage'
 import { jwtDecode } from 'jwt-decode'
@@ -72,13 +72,13 @@ export function Layout() {
         <div className='side-column'></div>
       </Nav>
       <HomeNavbarModal show={showNavbarModal} handleClose={handleCloseNavbarModal} handleLogout={handleLogout} showAdmin={showAdmin} />
-      <Row>
-        <Col></Col>
-        <Col md={8}>
-          <Outlet />
-        </Col>
-        <Col></Col>
-      </Row>
+      <Container>
+        <Row>
+          <Col>
+            <Outlet />
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
